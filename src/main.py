@@ -5,14 +5,14 @@ from create_map import Map
 from cameragroup import CameraGroup
 
 # Constantes
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 1000
 COLOR_BACKGROUND = (127, 127, 127)
 
 # Map constantes
-TILE_SIZE = 100
-ROWS = 18
-COLS = 15
+TILE_SIZE = 10
+ROWS = 10
+COLS = 10
 
 
 def update(screen, camera_group):
@@ -39,7 +39,7 @@ def start_game():
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 	pygame.display.set_caption("yorg.io")
 	clock = pygame.time.Clock()
-	pygame.event.set_grab(True)
+	#pygame.event.set_grab(True)
 	
 	camera_group = CameraGroup()
 
@@ -49,12 +49,9 @@ def start_game():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				running = False
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_ESCAPE:
-				running = False
-
-		if event.type == pygame.MOUSEWHEEL:
-			camera_group.zoom_scale += event.y * 0.03
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_ESCAPE:
+					running = False
 
 
 		update(screen, camera_group)

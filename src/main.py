@@ -1,7 +1,6 @@
 import pygame
 import random
 
-from create_map import Map
 from cameragroup import CameraGroup
 
 # Constantes
@@ -16,51 +15,46 @@ COLS = 10
 
 
 def update(screen, camera_group):
-	"""
+    """
 	Actualise chaque élèments du jeu 
 	"""
 
-	screen.fill(COLOR_BACKGROUND)
-	camera_group.update()
-	camera_group.custom_draw()
+    screen.fill(COLOR_BACKGROUND)
+    camera_group.update()
+    camera_group.custom_draw()
 
-	pygame.display.update()
-
-
+    pygame.display.update()
 
 
 def start_game():
-	"""
+    """
 	Fonction principal du jeu
 	"""
 
-	# Setup pygame
-	pygame.init()
-	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-	pygame.display.set_caption("yorg.io")
-	clock = pygame.time.Clock()
-	#pygame.event.set_grab(True)
-	
-	camera_group = CameraGroup()
+    # Setup pygame
+    pygame.init()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pygame.display.set_caption("yorg.io")
+    clock = pygame.time.Clock()
+    # pygame.event.set_grab(True)
 
-	running = True
-	while running:
+    camera_group = CameraGroup()
 
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				running = False
-			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_ESCAPE:
-					running = False
+    running = True
+    while running:
 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
 
-		update(screen, camera_group)
+        update(screen, camera_group)
 
-
-		clock.tick(60)
-
+        clock.tick(60)
 
 
 if __name__ == '__main__':
-	start_game()
-	pygame.quit()
+    start_game()
+    pygame.quit()
